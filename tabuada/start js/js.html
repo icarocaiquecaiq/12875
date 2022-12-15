@@ -7,34 +7,87 @@
     <title>Document</title>
 </head>
 
-<script>
-    document.write('<h1> cauculadora </h1>')
 
-    number('digite um numero:')
-
-   
-
-
-
-    function number(numero) {
-    let seunumero= prompt(numero)
-    let div = document.getElementById ('div')
-    div.innertext + seunumero  
-    
-   
-    
-    }
-
-
-</script>
 <body>
-    <input type="button" value="+"  onclick = number()>
-    <input type="button" value="-" >
-    <input type="button" value="*" >
-    <input type="button" value="/" >
+    <h1> calculadora </h1>
+    <input type="button" value="+" onclick="calcular('+')" >
+    <input type="button" value="-" onclick="calcular('-')">
+    <input type="button" value="*" onclick="calcular('*')">
+    <input type="button" value="/" onclick="calcular('/')">
+    <hr>
+    <div id="change"> valor inicial </div>
 
-    <div id="div"> teste </div>
+    <script>
 
+        var primeiroNumero = 0
+        var segundoNumero= 0
+        var muda= document.getElementById('change')
+
+        obterNumero('informe o primeiro numero')
+     
+       
+        exibir(primeiroNumero)
+    
+        function calcular (sinal) {
+
+            obterNumero('informe seu segundo numero')
+
+            let resultado= 0 
+                
+            switch (sinal) {
+                case '+':
+                    resultado = primeiroNumero+segundoNumero 
+                    
+                    break;
+            
+                case '-':
+                    resultado = primeiroNumero-segundoNumero 
+                    
+                    break;
+            
+                case '*':
+                    resultado = primeiroNumero*segundoNumero 
+                    
+                    break;
+            
+                case '/':
+                    resultado = primeiroNumero+segundoNumero 
+                    
+                    break;
+            
+                default:
+                    break;
+            }
+                
+           exibir(resultado)
+                
+        }
+
+        function obterNumero(label){
+            let numero=parseFloat(prompt(label))
+
+            if (primeiroNumero === 0) {
+                primeiroNumero= numero   
+            }
+            else(
+                segundoNumero= numero
+            ) 
+               
+                
+        }
+
+        function exibir(valor) {
+            muda.innerText=valor            
+        }
+
+            
+    
+           
+    
+      
+        
+        
+    </script>
     
 </body>
 </html>
